@@ -69,7 +69,7 @@ img {
 
 
 <p>This is an analysis of a dataset[^1] provided by the <a href="http://groupware.les.inf.puc-rio.br/har">HAR group</a>.</p>
-<p>The analysis aims at reproducing their prediction of the variable “classe”. For that purpose we will build a model, training with a subset of training data and do our own testing against the complement training We will also use the model to predict 20 test cases provided as testing sample.</p>
+<p>The analysis aims at reproducing their prediction of the variable “classe”. For that purpose we will build a model, train it with a subset of training data and do our own testing against the complement set. We will also use the model to predict 20 test cases provided as testing sample.</p>
 <div id="environment" class="section level2">
 <h2>Environment</h2>
 <pre class="r"><code>library(caret)</code></pre>
@@ -173,6 +173,9 @@ cmat&lt;-confusionMatrix(predictions, subval$classe)</code></pre>
 <pre class="r"><code>cmat$overall[1]</code></pre>
 <pre><code>##  Accuracy 
 ## 0.9717107</code></pre>
+</div>
+<div id="refinement" class="section level2">
+<h2>Refinement</h2>
 <p>We could decrease the computational load by picking a subset of the variables based on their predictive value or GINI ranking</p>
 <pre class="r"><code>varImp(model)</code></pre>
 <pre><code>## rf variable importance
